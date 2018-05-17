@@ -6,7 +6,9 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack-dev-server",
-    "test": "jest -i --coverage --verbose"
+    "test": "jest -i --coverage --verbose",
+    "start": "node index.js",
+    "heroku-postbuild": "webpack -p --progress"
   },
   "keywords": [],
   "author": "Melanie Downing",
