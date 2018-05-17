@@ -63,7 +63,7 @@ module.exports = {
         exclude: /\.glyph.svg/,
         use: [
           {
-            loader: 'url-loader',
+            loader: 'file-loader',
             options: {
               name: 'image/[name].[ext]',
             },
