@@ -17,6 +17,7 @@ sudo: required
 branches:
   only:
   - master
+  - dev
   # except:
   #   -
 before_script: npm i
