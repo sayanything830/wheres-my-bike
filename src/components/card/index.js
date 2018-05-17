@@ -1,4 +1,5 @@
 import React from 'react';
+import './_card.scss';
 import { connect } from 'react-redux';
 import { isSelected } from '../../actions/game-action';
 
