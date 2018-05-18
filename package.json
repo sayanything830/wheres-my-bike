@@ -8,7 +8,7 @@
     "watch": "webpack-dev-server",
     "test": "jest -i --coverage --verbose",
     "start": "node index.js",
-    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
+    "heroku-postbuild": "webpack -p --progress"
   },
   "keywords": [],
   "author": "Melanie Downing",
