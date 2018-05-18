@@ -7,7 +7,7 @@
     "build": "webpack",
     "watch": "webpack-dev-server",
     "test": "jest -i --coverage --verbose",
-    "start": "node index.js",
+    "start": "node .src/main.js",
     "heroku-postbuild": "webpack -p --progress"
   },
   "keywords": [],
