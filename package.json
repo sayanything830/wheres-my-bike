@@ -42,5 +42,14 @@
     "uuid": "^3.2.1",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sayanything830/wheres-my-bike.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sayanything830/wheres-my-bike/issues"
+  },
+  "homepage": "https://github.com/sayanything830/wheres-my-bike#readme"
 }
