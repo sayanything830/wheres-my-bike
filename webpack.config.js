@@ -43,7 +43,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractPlugin.extract(['css-loader', 'sass-loader', 'resolve-url-loader?sourceMap']),
+        loader: ExtractPlugin.extract(['css-loader', 'resolve-url-loader', 'sass-loader?sourceMap']),
       },
       {
         test: /\.(woff|woff2|ttf|eot|glyph|\.svg)$/,
