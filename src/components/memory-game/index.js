@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { renderIf } from '../../lib/utils';
 import { checkForMatch } from '../../actions/game-action';
 import Card from '../card';
+import Modal from '../modal';
 
 class Memory extends React.Component {
   constructor(props) {

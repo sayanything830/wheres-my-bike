@@ -27,6 +27,7 @@ let initialState = {
   cardBId: undefined,
   clicks: 0,
   totalMatches: 0,
+  totalAttempts: 0,
   cards: cards,
 };
 
@@ -94,6 +95,10 @@ const memoryReducer = (state = initialState, action) => {
     flipped.cards = cardReducer(state.cards, isSelected(payload));
     // - return updated state
     return flipped;
+    //----------------------------
+    // play a new game
+  case 'REPLAY':
+    return initialState;
   default: return state;
   }
 };
