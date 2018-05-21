@@ -44,6 +44,8 @@ const memoryReducer = (state = initialState, action) => {
       const match = {...state};
       // - increase total matches
       match.totalMatches ++;
+      // - increase total attempts
+      match.totalAttempts ++;
       // - return click count to 0
       match.clicks = 0;
       // - update cards
@@ -54,6 +56,8 @@ const memoryReducer = (state = initialState, action) => {
     } else if(state.clicks === 2) {
       // - clone state
       const noMatch = {...state};
+      // - increase total attempts
+      noMatch.totalAttempts ++;
       // - return click count to 0
       noMatch.clicks = 0;
       // - flip cards back over

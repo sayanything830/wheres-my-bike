@@ -10,7 +10,7 @@ class Modal extends React.Component {
       <div classname='complete'>
         <h3>You Finished!!</h3>
         Attempts: {this.props.attempts}
-        <button type='button' onClick={this.props.reset}>Play Again</button>
+        <button type='button' onClick={this.props.replay}>Play Again</button>
       </div>
     );
   }

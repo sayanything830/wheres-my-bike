@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { renderIf } from '../../lib/utils';
-import { checkForMatch } from '../../actions/game-action';
+import { checkForMatch, replay } from '../../actions/game-action';
 import Card from '../card';
 import Modal from '../modal';
 
@@ -27,6 +27,13 @@ class Memory extends React.Component {
     }
   }
 
+  replay() {
+    this.props.reset();
+    this.setState({
+      clicks: 0,
+    });
+  }
+
 
   render() {
 
@@ -43,6 +50,10 @@ class Memory extends React.Component {
               value={card.value}
               className={card.className}/>))}
         </ul>
+        {renderIf(this.props.game.totalMatches === 8,
+          <Modal
+            replay={this.replay}
+            attempts={this.props.game.totalAttempts} />)}
       </div>
     );
   }
@@ -55,6 +66,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onSelect: cardId => dispatch(isSelected(cardId)),
   checkForMatch: () => dispatch(checkForMatch()),
+  reset: () => dispatch(replay()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Memory);
