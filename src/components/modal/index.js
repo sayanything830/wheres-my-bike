@@ -1,16 +1,17 @@
 import React from 'react';
 
 class Modal extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
+    console.log('__MODAL_PROPS__', this.props);
     return(
       <div classname='complete'>
-        <h3>You Finished!!</h3>
+        <h3>{this.props.message}</h3>
         Attempts: {this.props.attempts}
-        <button type='button' onClick={this.props.replay}>Play Again</button>
+        <button onClick={this.props.replay}>Play Again</button>
       </div>
     );
   }

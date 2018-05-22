@@ -14,7 +14,9 @@ class Memory extends React.Component {
     };
 
     this.handleFlip = this.handleFlip.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
+
 
   handleFlip() {
     let clicks = this.state.clicks;
@@ -27,16 +29,16 @@ class Memory extends React.Component {
     }
   }
 
-  replay() {
-    this.props.reset();
+  handleReset() {
     this.setState({
       clicks: 0,
     });
+    return this.props.replayGame();
   }
 
 
   render() {
-
+    // console.log('__MEMORY_PROPS__', this.props);
     return(
       <div>
         <ul>
@@ -52,7 +54,8 @@ class Memory extends React.Component {
         </ul>
         {renderIf(this.props.game.totalMatches === 8,
           <Modal
-            replay={this.replay}
+            message='You Finished!!'
+            replay={this.handleReset}
             attempts={this.props.game.totalAttempts} />)}
       </div>
     );
@@ -66,7 +69,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onSelect: cardId => dispatch(isSelected(cardId)),
   checkForMatch: () => dispatch(checkForMatch()),
-  reset: () => dispatch(replay()),
+  replayGame: () => dispatch(replay()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Memory);

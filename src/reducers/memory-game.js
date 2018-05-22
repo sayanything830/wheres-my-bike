@@ -1,5 +1,5 @@
 import cardReducer from './card';
-import { matchedCards, checkForMatch, flipDown, isSelected } from '../actions/game-action';
+import { matchedCards, checkForMatch, flipDown, isSelected, replay } from '../actions/game-action';
 
 // hard coded cards, could be dynamically generated with helper function
 let cards = [
@@ -102,7 +102,18 @@ const memoryReducer = (state = initialState, action) => {
     //----------------------------
     // play a new game
   case 'REPLAY':
-    return initialState;
+    // - clone state
+    const newGame = {...state};
+    // - reset cards to initial state
+    newGame.cards = cardReducer(state.cards, replay(state.cards));
+    // - reset game to initial state
+    newGame.cardAId = undefined;
+    newGame.cardBId = undefined;
+    newGame.clicks = 0;
+    newGame.totalMatches = 0;
+    newGame.totalAttempts = 0;
+    // - return initial game state
+    return newGame;
   default: return state;
   }
 };

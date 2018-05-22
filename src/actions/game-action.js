@@ -21,6 +21,7 @@ export const checkForMatch = () => ({
   type: 'CHECK_FOR_MATCH',
 });
 
-export const replay = () => ({
+export const replay = cards => ({
   type: 'REPLAY',
+  payload: cards,
 });
