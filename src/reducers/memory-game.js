@@ -1,5 +1,5 @@
 import cardReducer from './card';
-import { matchedCards, checkForMatch, flipDown, isSelected } from '../actions/game-action';
+import { matchedCards, checkForMatch, flipDown, isSelected, replay } from '../actions/game-action';
 
 // hard coded cards, could be dynamically generated with helper function
 let cards = [
@@ -27,6 +27,7 @@ let initialState = {
   cardBId: undefined,
   clicks: 0,
   totalMatches: 0,
+  totalAttempts: 0,
   cards: cards,
 };
 
@@ -43,6 +44,8 @@ const memoryReducer = (state = initialState, action) => {
       const match = {...state};
       // - increase total matches
       match.totalMatches ++;
+      // - increase total attempts
+      match.totalAttempts ++;
       // - return click count to 0
       match.clicks = 0;
       // - update cards
@@ -53,6 +56,8 @@ const memoryReducer = (state = initialState, action) => {
     } else if(state.clicks === 2) {
       // - clone state
       const noMatch = {...state};
+      // - increase total attempts
+      noMatch.totalAttempts ++;
       // - return click count to 0
       noMatch.clicks = 0;
       // - flip cards back over
@@ -94,6 +99,21 @@ const memoryReducer = (state = initialState, action) => {
     flipped.cards = cardReducer(state.cards, isSelected(payload));
     // - return updated state
     return flipped;
+    //----------------------------
+    // play a new game
+  case 'REPLAY':
+    // - clone state
+    const newGame = {...state};
+    // - reset cards to initial state
+    newGame.cards = cardReducer(state.cards, replay(state.cards));
+    // - reset game to initial state
+    newGame.cardAId = undefined;
+    newGame.cardBId = undefined;
+    newGame.clicks = 0;
+    newGame.totalMatches = 0;
+    newGame.totalAttempts = 0;
+    // - return initial game state
+    return newGame;
   default: return state;
   }
 };

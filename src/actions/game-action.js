@@ -20,3 +20,8 @@ export const flipDown = (cardAId, cardBId) => ({
 export const checkForMatch = () => ({
   type: 'CHECK_FOR_MATCH',
 });
+
+export const replay = cards => ({
+  type: 'REPLAY',
+  payload: cards,
+});

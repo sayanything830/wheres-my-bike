@@ -34,6 +34,14 @@ export default (state, action) => {
       return card;
     });
 
+  case 'REPLAY':
+    return state.map(card => {
+      card.matched = false;
+      card.isSelected = false;
+      card.className = 'back';
+      return card;
+    });
+
   default: return state;
   }
 };
